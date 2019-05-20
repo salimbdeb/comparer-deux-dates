@@ -1,0 +1,21 @@
+
+<h2>Deux dates a comparer</h2>
+
+<form [formGroup]="datesForm">
+  <div class="row">
+    <div class="col-md-4 form-group">
+      <input type="text" class="form-control mb-3" placeholder="Date demande" bsDatepicker formControlName="dateDemande" />
+      <pre *ngIf="datesForm.value.dateDemande" class="code-preview">{{datesForm.value.dateDemande | date}}</pre>
+    </div>
+    <div class="col-md-4 form-group">
+      <input type="text" class="form-control mb-3" placeholder="Date creation" bsDatepicker formControlName="dateCreation" />
+     <!-- <pre *ngIf="datesForm.value.dateCreation" class="code-preview">{{datesForm.value.dateCreation | date}}</pre> --> 
+      <div *ngIf="!datesForm.valid && (datesForm.touched || datesForm.dirty)" 
+                  class="cross-validation-error-message alert alert-danger">
+                  Date de création doit etre superieur a la date de la demande.
+          
+      </div>
+    </div>
+    
+  </div>
+</form>
